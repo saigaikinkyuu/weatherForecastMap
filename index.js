@@ -18,6 +18,7 @@ function mapDraw(num) {
 
     // GeoJSON データを読み込んで地図に追加
     $.getJSON("./prefJson.geojson", function (data) {
+        console.log("作成")
         L.geoJson(data, {
             style: function(feature) {
                 return {
