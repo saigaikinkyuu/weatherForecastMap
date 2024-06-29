@@ -1,23 +1,25 @@
 var map;
 
 function mapDraw(num) {
-  // 地図が既に初期化されているか確認
-  if (map !== undefined) {
-    // 地図を削除
-    map.remove();
-  }
-	map = L.map('map', {
+    // 地図が既に初期化されているか確認
+    if (map !== undefined) {
+        // 地図を削除
+        map.off();
+        map.remove();
+    }
+
+    map = L.map('map', {
         zoomControl: false,
         minZoom: 7,
         maxZoom: 9,
-	});
+    });
 
+    L.control.scale({
+        maxWidth: 150,
+        position: 'bottomright',
+        imperial: false
+    }).addTo(map);
 
-	L.control.scale({
-		maxWidth: 150,
-		position: 'bottomright',
-		imperial: false
-	}).addTo(map);
     $.getJSON("./prefJson.geojson", function (data) {
         L.geoJson(data, {
             style: {
@@ -28,9 +30,13 @@ function mapDraw(num) {
                 "fillOpacity": 1
             }
         }).addTo(map);
+    }).fail(function() {
+        console.error("GeoJSON data could not be loaded.");
     });
+
     var initialLatLng = L.latLng(36.00, 137.59);
     map.setView(initialLatLng, 7);
+
     /*
     var currentTime = new Date();
     var currentMin = ('0' + currentTime.getMinutes()).slice(-2);
@@ -73,7 +79,6 @@ function mapDraw(num) {
 
 function changeMap(i) {
     console.log("C," + i);
-    map.remove();
     mapDraw(i);
 }
 
