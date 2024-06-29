@@ -36,8 +36,7 @@ function mapDraw(num) {
     }).fail(function() {
         console.error("GeoJSON data could not be loaded.");
     });
-
-
+    /*
     var currentTime = new Date();
     var currentMin = ('0' + currentTime.getMinutes()).slice(-2);
     var currentHour = currentTime.getHours();
@@ -74,6 +73,7 @@ function mapDraw(num) {
             console.error("Forecast data for area " + area + " could not be loaded.");
         });
     });
+    */
 }
 
 function changeMap(i) {
