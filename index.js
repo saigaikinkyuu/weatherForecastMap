@@ -23,7 +23,7 @@ function mapDraw(num) {
     $.getJSON("./prefJson.geojson", function (data) {
         L.geoJson(data, {
             style: {
-                "color": "#212192",
+                "color": "white",
                 "weight": 1.5,
                 "opacity": 1,
                 "fillColor": "#239423",
