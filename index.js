@@ -7,7 +7,7 @@ function mapDraw(num) {
         maxZoom: 9
     });
 
-    var initialLatLng = L.latLng("35.39", "139.44");
+    var initialLatLng = L.latLng(35.39, 139.44);
     map.setView(initialLatLng, 7);
 
     L.control.scale({
