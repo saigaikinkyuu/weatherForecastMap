@@ -10,7 +10,7 @@ function mapDraw(num) {
 
     map = L.map('map', {
         zoomControl: false,
-        minZoom: 7,
+        minZoom: 5,
         maxZoom: 9,
     });
 
@@ -35,7 +35,7 @@ function mapDraw(num) {
     });
 
     var initialLatLng = L.latLng(36.00, 137.59);
-    map.setView(initialLatLng, 7);
+    map.setView(initialLatLng, 5);
 
     /*
     var currentTime = new Date();
