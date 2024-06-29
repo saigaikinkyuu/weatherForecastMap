@@ -37,7 +37,6 @@ function mapDraw(num) {
     var initialLatLng = L.latLng(36.00, 137.59);
     map.setView(initialLatLng, 6);
 
-    /*
     var currentTime = new Date();
     var currentMin = ('0' + currentTime.getMinutes()).slice(-2);
     var currentHour = currentTime.getHours();
@@ -74,7 +73,6 @@ function mapDraw(num) {
             console.error("Forecast data for area " + area + " could not be loaded.");
         });
     });
-    */
 }
 
 function changeMap(i) {
