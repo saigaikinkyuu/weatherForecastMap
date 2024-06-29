@@ -1,6 +1,6 @@
 var map;
 
-function mapDraw(num) {
+function mapDrawAll() {
     // 地図が既に初期化されているか確認
     if (map !== undefined) {
         // 地図を削除
@@ -11,7 +11,7 @@ function mapDraw(num) {
     map = L.map('map', {
         zoomControl: false,
         minZoom: 6,
-        maxZoom: 9,
+        maxZoom: 6,
     });
 
     L.control.scale({
@@ -79,21 +79,6 @@ function mapDraw(num) {
                 zIndexOffset: 10000
             });
             var forecastIcon = L.marker(forecastLatLng, {icon: forecastIconImage }).addTo(map);
-            map.on('zoomend', function() {
-                forecastIcon.setIcon(L.icon({
-                    var iconSize = [128, 72]; // 初期のアイコンサイズ
-                    // ズームレベルによってアイコンサイズを調整
-                    if (map.getZoom() <= 5) {
-                        iconSize = [160, 90];
-                    }
-                    var forecastIconImage = L.icon({
-                        iconUrl: 'png/place/' + iconPlace[a][0] + '.png',
-                        iconSize: iconSize,//16:9
-                        iconAnchor: [80, 45],
-                        popupAnchor: [0, -40],
-                        zIndexOffset: 10000
-                    });
-                })})
             a++
         }).fail(function() {
             console.error("Forecast data for area " + area + " could not be loaded.");
