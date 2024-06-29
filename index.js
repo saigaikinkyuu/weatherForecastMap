@@ -23,10 +23,10 @@ function mapDraw(num) {
     $.getJSON("./prefJson.geojson", function (data) {
         L.geoJson(data, {
             style: {
-                "color": "#ffffff",
+                "color": "#212192",
                 "weight": 1.5,
                 "opacity": 1,
-                "fillColor": "#3a3a3a",
+                "fillColor": "#239423",
                 "fillOpacity": 1
             }
         }).addTo(map);
