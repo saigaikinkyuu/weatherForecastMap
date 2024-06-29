@@ -78,6 +78,7 @@ function mapDraw(num) {
                 popupAnchor: [0, -40],
                 zIndexOffset: 10000
             });
+            var forecastIcon = L.marker(forecastLatLng, {icon: forecastIconImage }).addTo(map);
             a++
         }).fail(function() {
             console.error("Forecast data for area " + area + " could not be loaded.");
