@@ -64,11 +64,19 @@ function mapDraw(num) {
     }
 
     var forecastAreas = ["016000","014100","040000","130000","150000","170000","230000","270000","340000","390000","400000","460100","471000"];
+    var iconPlace = [["札幌", 43.934122, 139.993943]]
 
     // AMeDAS データを読み込み、円を追加
     forecastAreas.forEach(function(area) {
         $.getJSON("https://www.jma.go.jp/bosai/forecast/data/forecast/" + area + ".json", function (data) {
-            // Processing data
+            var forecastLatLng = new L.LatLng(iconPlace[a][1], iconPlace[a][2]);
+            var forecastIconImage = L.icon({
+                iconUrl: 'png/place/' + iconPlace[a][0] + '.png',
+                iconSize: [40, 40],
+                iconAnchor: [20, 20],
+                popupAnchor: [0, -40],
+                zIndexOffset: 10000
+            });
         }).fail(function() {
             console.error("Forecast data for area " + area + " could not be loaded.");
         });
