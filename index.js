@@ -17,7 +17,7 @@ function mapDraw(num) {
     }).addTo(map);
 
     // GeoJSON データを読み込んで地図に追加
-    $.getJSON("./prefectures.geojson", function (data) {
+    $.getJSON("./prefJson.geojson", function (data) {
         L.geoJson(data, {
             style: {
                 "color": "#ffffff",
