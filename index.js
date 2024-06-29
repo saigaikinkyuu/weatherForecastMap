@@ -92,7 +92,7 @@ function changeMap(i) {
 }
 
 function start() {
-    mapDraw(1);
+    mapDrawAll();
 }
 
 start();
