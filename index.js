@@ -16,6 +16,9 @@ function mapDraw(num) {
         imperial: false
     }).addTo(map);
 
+    L.tileLayer(
+        'https://www.jma.go.jp/bosai/himawari/data/nowc/20240528131000/none/20240528131500/surf/hrpns/{z}/{x}/{y}.png', {}
+    ).addTo(map);
     // GeoJSON データを読み込んで地図に追加
     $.getJSON("./prefJson.geojson", function (data) {
         console.log("作成")
@@ -34,9 +37,6 @@ function mapDraw(num) {
         console.error("GeoJSON data could not be loaded.");
     });
 
-    L.tileLayer(
-        'https://www.jma.go.jp/bosai/himawari/data/nowc/20240528131000/none/20240528131500/surf/hrpns/{z}/{x}/{y}.png', {}
-    ).addTo(map);
 
     var currentTime = new Date();
     var currentMin = ('0' + currentTime.getMinutes()).slice(-2);
