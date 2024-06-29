@@ -7,8 +7,6 @@ function mapDraw(num) {
         maxZoom: 9
     });
 
-    var initialLatLng = L.latLng(35.39, 139.44);
-    map.setView(initialLatLng, 7);
 
     L.control.scale({
         maxWidth: 150,
@@ -36,6 +34,8 @@ function mapDraw(num) {
     }).fail(function() {
         console.error("GeoJSON data could not be loaded.");
     });
+    var initialLatLng = L.latLng(35.39, 139.44);
+    map.setView(initialLatLng, 7);
     /*
     var currentTime = new Date();
     var currentMin = ('0' + currentTime.getMinutes()).slice(-2);
