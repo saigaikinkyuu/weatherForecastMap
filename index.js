@@ -19,14 +19,18 @@ function mapDraw(num) {
     // GeoJSON データを読み込んで地図に追加
     $.getJSON("./prefJson.geojson", function (data) {
         L.geoJson(data, {
-            style: {
-                "color": "#ffffff",
-                "weight": 1.5,
-                "opacity": 1,
-                "fillColor": "#3a3a3a",
-                "fillOpacity": 1
+            style: function(feature) {
+                // areaDataに含まれない場合は、デフォルトのスタイルを適用
+                return {
+                    color: "#ffffff",
+                    weight: 1.5,
+                    opacity: 1,
+                    fillColor: "#3a3a3a",
+                    fillOpacity: 1
+                };
             }
         }).addTo(map);
+    })
         L.tileLayer(
                 'https://www.jma.go.jp/bosai/himawari/data/nowc/20240528131000/none/20240528131500/surf/hrpns/{z}/{x}/{y}.png', {}).addTo(map);
         
@@ -75,7 +79,6 @@ function mapDraw(num) {
                 }
             });
         }
-    });
 }
 
 function changeMap(i) {
