@@ -64,7 +64,8 @@ function mapDraw(num) {
     }
 
     var forecastAreas = ["016000","014100","040000","130000","150000","170000","230000","270000","340000","390000","400000","460100","471000"];
-    var iconPlace = [["札幌", 43.934122, 139.993943]]
+    var iconPlace = [["札幌", 43.934122, 139.993943],["釧路", 42.042173, 144.786549],["仙台", 38.072153, 142.818724],["東京", 35.711801, 141.580899],["新潟", 38.122108, 137.359597],["石川", 37.091222, 135.756772],["名古屋", 34.412889, 137.708728],["大阪", 33.782111, 135.486990],["広島", 35.350192, 131.868731],["高知", 32.867180, 133.598513],["福岡", 33.213064, 128.361559],["鹿児島", 31.807946, 131.995688],["沖縄", 26.332519, 128.615472]]
+    var a = 0
 
     // AMeDAS データを読み込み、円を追加
     forecastAreas.forEach(function(area) {
@@ -72,11 +73,12 @@ function mapDraw(num) {
             var forecastLatLng = new L.LatLng(iconPlace[a][1], iconPlace[a][2]);
             var forecastIconImage = L.icon({
                 iconUrl: 'png/place/' + iconPlace[a][0] + '.png',
-                iconSize: [40, 40],
-                iconAnchor: [20, 20],
+                iconSize: [160, 90],//16:9
+                iconAnchor: [80, 45],
                 popupAnchor: [0, -40],
                 zIndexOffset: 10000
             });
+            a++
         }).fail(function() {
             console.error("Forecast data for area " + area + " could not be loaded.");
         });
