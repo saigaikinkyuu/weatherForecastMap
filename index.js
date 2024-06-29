@@ -73,7 +73,7 @@ function mapDraw(num) {
             var forecastLatLng = new L.LatLng(iconPlace[a][1], iconPlace[a][2]);
             var forecastIconImage = L.icon({
                 iconUrl: 'png/place/' + iconPlace[a][0] + '.png',
-                iconSize: [160, 90],//16:9
+                iconSize: [128, 72],//16:9
                 iconAnchor: [80, 45],
                 popupAnchor: [0, -40],
                 zIndexOffset: 10000
