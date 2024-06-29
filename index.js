@@ -1,40 +1,35 @@
 var map;
 
 function mapDraw(num) {
-    map = L.map('map', {
+  // 地図が既に初期化されているか確認
+  if (map !== undefined) {
+    // 地図を削除
+    map.remove();
+  }
+	map = L.map('map', {
         zoomControl: false,
         minZoom: 7,
-        maxZoom: 9
-    });
+        maxZoom: 9,
+	});
 
 
-    L.control.scale({
-        maxWidth: 150,
-        position: 'bottomright',
-        imperial: false
-    }).addTo(map);
-
-    L.tileLayer(
-        'https://www.jma.go.jp/bosai/himawari/data/nowc/20240528131000/none/20240528131500/surf/hrpns/{z}/{x}/{y}.png', {}
-    ).addTo(map);
-    // GeoJSON データを読み込んで地図に追加
+	L.control.scale({
+		maxWidth: 150,
+		position: 'bottomright',
+		imperial: false
+	}).addTo(map);
     $.getJSON("./prefJson.geojson", function (data) {
-        console.log("作成")
         L.geoJson(data, {
-            style: function(feature) {
-                return {
-                    color: "#ffffff",
-                    weight: 1.5,
-                    opacity: 1,
-                    fillColor: "#3a3a3a",
-                    fillOpacity: 1
-                };
+            style: {
+                "color": "#ffffff",
+                "weight": 1.5,
+                "opacity": 1,
+                "fillColor": "#3a3a3a",
+                "fillOpacity": 1
             }
         }).addTo(map);
-    }).fail(function() {
-        console.error("GeoJSON data could not be loaded.");
     });
-    var initialLatLng = L.latLng(35.39, 139.44);
+    var initialLatLng = L.latLng(36.00, 137.59);
     map.setView(initialLatLng, 7);
     /*
     var currentTime = new Date();
