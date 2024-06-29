@@ -79,6 +79,223 @@ function mapDrawAll() {
                 zIndexOffset: 10000
             });
             var forecastIcon = L.marker(forecastLatLng, {icon: forecastIconImage }).addTo(map);
+            let weatherCode = data.timeSeries[0].areas[0].weatherCodes[0]
+            let weatherIcon = ""
+            if(weatherCode === 100){
+                weatherIcon = "晴れ"
+            }else if(weatherCode === 101){
+                weatherIcon = "晴れ時々曇"
+            }else if(weatherCode === 102){
+                weatherIcon = "晴れ一時雨"
+            }else if(weatherCode === 103){
+                weatherIcon = "晴れ一時雨"
+            }else if(weatherCode === 104){
+                weatherIcon = "晴れ一時雪"
+            }else if(weatherCode === 105){
+                weatherIcon = "晴れ一時雪"
+            }else if(weatherCode === 106){
+                weatherIcon = "晴れ一時雨"
+            }else if(weatherCode === 107){
+                weatherIcon = "晴れ一時雨"
+            }else if(weatherCode === 108){
+                weatherIcon = "晴れ一時雨"
+            }else if(weatherCode === 110){
+                weatherIcon = "晴れのち時々曇"
+            }else if(weatherCode === 111){
+                weatherIcon = "晴れのち時々曇"
+            }else if(weatherCode === 112){
+                weatherIcon = "晴れのち時々雨"
+            }else if(weatherCode === 113){
+                weatherIcon = "晴れのち時々雨"
+            }else if(weatherCode === 114){
+                weatherIcon = "晴れのち時々雨"
+            }else if(weatherCode === 115){
+                weatherIcon = "晴れのち時々雪"
+            }else if(weatherCode === 116){
+                weatherIcon = "晴れのち時々雪"
+            }else if(weatherCode === 117){
+                weatherIcon = "晴れのち時々雪"
+            }else if(weatherCode === 118){
+                weatherIcon = "晴れのち時々雪"
+            }else if(weatherCode === 119){
+                weatherIcon = "晴れのち時々雨"
+            }else if(weatherCode === 120){
+                weatherIcon = "晴れ一時雨"
+            }else if(weatherCode === 121){
+                weatherIcon = "晴れ一時雨"
+            }else if(weatherCode === 122){
+                weatherIcon = "晴れ一時雨"
+            }else if(weatherCode === 123){
+                weatherIcon = "晴れ一時雨"
+            }else if(weatherCode === 124){
+                weatherIcon = "晴れ一時雪"
+            }else if(weatherCode === 125){
+                weatherIcon = "晴れのち時々雨"
+            }else if(weatherCode === 126){
+                weatherIcon = "晴れのち時々雨"
+            }else if(weatherCode === 127){
+                weatherIcon = "晴れのち時々雨"
+            }else if(weatherCode === 128){
+                weatherIcon = "晴れのち時々雨"
+            }else if(weatherCode === 130){
+                weatherIcon = "晴れ"
+            }else if(weatherCode === 131){
+                weatherIcon = "晴れ"
+            }else if(weatherCode === 132){
+                weatherIcon = "晴れのち時々曇"
+            }else if(weatherCode === 140){
+                weatherIcon = "晴れ一時雨"
+            }else if(weatherCode === 160){
+                weatherIcon = "晴れ一時雪"
+            }else if(weatherCode === 170){
+                weatherIcon = "晴れ一時雪"
+            }else if(weatherCode === 181){
+                weatherIcon = "晴れのち時々雪"
+            }else if(weatherCode === 200){
+                weatherIcon = "曇"
+            }else if(weatherCode === 201){
+                weatherIcon = "曇時々晴れ"
+            }else if(weatherCode === 202){
+                weatherIcon = "曇時々雨"
+            }else if(weatherCode === 203){
+                weatherIcon = "曇時々雨"
+            }else if(weatherCode === 204){
+                weatherIcon = "曇時々雪"
+            }else if(weatherCode === 205){
+                weatherIcon = "曇時々雪"
+            }else if(weatherCode === 206){
+                weatherIcon = "曇時々雪"
+            }else if(weatherCode === 207){
+                weatherIcon = "曇時々雪"
+            }else if(weatherCode === 208){
+                weatherIcon = "曇時々雨"
+            }else if(weatherCode === 209){
+                weatherIcon = "曇"
+            }else if(weatherCode === 210){
+                weatherIcon = "曇のち時々晴れ"
+            }else if(weatherCode === 211){
+                weatherIcon = "曇のち時々晴れ"
+            }else if(weatherCode === 212){
+                weatherIcon = "曇のち時々雨"
+            }else if(weatherCode === 213){
+                weatherIcon = "曇のち時々雨"
+            }else if(weatherCode === 214){
+                weatherIcon = "曇のち時々雨"
+            }else if(weatherCode === 215){
+                weatherIcon = "曇のち時々雪"
+            }else if(weatherCode === 216){
+                weatherIcon = "曇のち時々雪"
+            }else if(weatherCode === 217){
+                weatherIcon = "曇のち時々雪"
+            }else if(weatherCode === 218){
+                weatherIcon = "曇のち時々雪"
+            }else if(weatherCode === 219){
+                weatherIcon = "曇のち時々雨"
+            }else if(weatherCode === 220){
+                weatherIcon = "曇時々雨"
+            }else if(weatherCode === 221){
+                weatherIcon = "曇時々雨"
+            }else if(weatherCode === 222){
+                weatherIcon = "曇時々雨"
+            }else if(weatherCode === 223){
+                weatherIcon = "曇時々晴れ"
+            }else if(weatherCode === 224){
+                weatherIcon = "曇のち時々雨"
+            }else if(weatherCode === 225){
+                weatherIcon = "曇のち時々雨"
+            }else if(weatherCode === 226){
+                weatherIcon = "曇のち時々雨"
+            }else if(weatherCode === 228){
+                weatherIcon = "曇のち時々雪"
+            }else if(weatherCode === 229){
+                weatherIcon = "曇のち時々雪"
+            }else if(weatherCode === 230){
+                weatherIcon = "曇のち時々雪"
+            }else if(weatherCode === 231){
+                weatherIcon = "曇時々雨"
+            }else if(weatherCode === 240){
+                weatherIcon = "曇時々雨"
+            }else if(weatherCode === 250){
+                weatherIcon = "曇時々雪"
+            }else if(weatherCode === 260){
+                weatherIcon = "曇時々雪"
+            }else if(weatherCode === 270){
+                weatherIcon = "曇時々雪"
+            }else if(weatherCode === 281){
+                weatherIcon = "曇のち時々雪"
+            }else if(weatherCode === 300){
+                weatherIcon = "雨"
+            }else if(weatherCode === 301){
+                weatherIcon = "雨時々晴れ"
+            }else if(weatherCode === 302){
+                weatherIcon = "雨時々止む"
+            }else if(weatherCode === 303){
+                weatherIcon = "雨時々雪"//ここまで作業完了
+            }else if(weatherCode === 304){
+                weatherIcon = "曇時々雪"
+            }else if(weatherCode === 305){
+                weatherIcon = "曇時々雪"
+            }else if(weatherCode === 306){
+                weatherIcon = "曇時々雪"
+            }else if(weatherCode === 307){
+                weatherIcon = "曇時々雪"
+            }else if(weatherCode === 308){
+                weatherIcon = "曇時々雨"
+            }else if(weatherCode === 309){
+                weatherIcon = "曇"
+            }else if(weatherCode === 310){
+                weatherIcon = "曇のち時々晴れ"
+            }else if(weatherCode === 311){
+                weatherIcon = "曇のち時々晴れ"
+            }else if(weatherCode === 312){
+                weatherIcon = "曇のち時々雨"
+            }else if(weatherCode === 313){
+                weatherIcon = "曇のち時々雨"
+            }else if(weatherCode === 314){
+                weatherIcon = "曇のち時々雨"
+            }else if(weatherCode === 315){
+                weatherIcon = "曇のち時々雪"
+            }else if(weatherCode === 316){
+                weatherIcon = "曇のち時々雪"
+            }else if(weatherCode === 317){
+                weatherIcon = "曇のち時々雪"
+            }else if(weatherCode === 318){
+                weatherIcon = "曇のち時々雪"
+            }else if(weatherCode === 319){
+                weatherIcon = "曇のち時々雨"
+            }else if(weatherCode === 320){
+                weatherIcon = "曇時々雨"
+            }else if(weatherCode === 321){
+                weatherIcon = "曇時々雨"
+            }else if(weatherCode === 322){
+                weatherIcon = "曇時々雨"
+            }else if(weatherCode === 323){
+                weatherIcon = "曇時々晴れ"
+            }else if(weatherCode === 324){
+                weatherIcon = "曇のち時々雨"
+            }else if(weatherCode === 325){
+                weatherIcon = "曇のち時々雨"
+            }else if(weatherCode === 326){
+                weatherIcon = "曇のち時々雨"
+            }else if(weatherCode === 328){
+                weatherIcon = "曇のち時々雪"
+            }else if(weatherCode === 329){
+                weatherIcon = "曇のち時々雪"
+            }else if(weatherCode === 330){
+                weatherIcon = "曇のち時々雪"
+            }else if(weatherCode === 331){
+                weatherIcon = "曇時々雨"
+            }else if(weatherCode === 340){
+                weatherIcon = "曇時々雨"
+            }else if(weatherCode === 350){
+                weatherIcon = "曇時々雪"
+            }else if(weatherCode === 360){
+                weatherIcon = "曇時々雪"
+            }else if(weatherCode === 370){
+                weatherIcon = "曇時々雪"
+            }else if(weatherCode === 381){
+                weatherIcon = "曇のち時々雪"
+            }
             a++
         }).fail(function() {
             console.error("Forecast data for area " + area + " could not be loaded.");
