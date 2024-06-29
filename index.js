@@ -71,9 +71,14 @@ function mapDraw(num) {
     forecastAreas.forEach(function(area) {
         $.getJSON("https://www.jma.go.jp/bosai/forecast/data/forecast/" + area + ".json", function (data) {
             var forecastLatLng = new L.LatLng(iconPlace[a][1], iconPlace[a][2]);
+            var iconSize = [128, 72]; // 初期のアイコンサイズ
+            // ズームレベルによってアイコンサイズを調整
+            if (map.getZoom() <= 5) {
+                iconSize = [160, 90];
+            }
             var forecastIconImage = L.icon({
                 iconUrl: 'png/place/' + iconPlace[a][0] + '.png',
-                iconSize: [128, 72],//16:9
+                iconSize: iconSize,//16:9
                 iconAnchor: [80, 45],
                 popupAnchor: [0, -40],
                 zIndexOffset: 10000
