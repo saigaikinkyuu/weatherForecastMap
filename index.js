@@ -84,6 +84,21 @@ function mapDraw(num) {
                 zIndexOffset: 10000
             });
             var forecastIcon = L.marker(forecastLatLng, {icon: forecastIconImage }).addTo(map);
+            map.on('zoomend', function() {
+                forecastIcon.setIcon(L.icon({
+                    var iconSize = [128, 72]; // 初期のアイコンサイズ
+                    // ズームレベルによってアイコンサイズを調整
+                    if (map.getZoom() <= 5) {
+                        iconSize = [160, 90];
+                    }
+                    var forecastIconImage = L.icon({
+                        iconUrl: 'png/place/' + iconPlace[a][0] + '.png',
+                        iconSize: iconSize,//16:9
+                        iconAnchor: [80, 45],
+                        popupAnchor: [0, -40],
+                        zIndexOffset: 10000
+                    });
+                })})
             a++
         }).fail(function() {
             console.error("Forecast data for area " + area + " could not be loaded.");
