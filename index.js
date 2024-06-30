@@ -318,6 +318,8 @@ function mapDrawAll() {
                 weatherIcon = "雪時々みぞれ"
             }else if(weatherCode === 450){
                 weatherIcon = "雪"
+            }else {
+                weatherIcon = "不明"
             }
             var weatherLatLng = new L.LatLng(iconPlace[a][1], iconPlace[a][2]);
             var weatherIconImage = L.icon({
