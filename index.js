@@ -76,7 +76,7 @@ function mapDrawAll() {
                 iconSize: [128, 72],//16:9
                 iconAnchor: [80, 45],
                 popupAnchor: [0, -40],
-                zIndexOffset: 10000
+                zIndexOffset: 1000
             });
             var forecastIcon = L.marker(forecastLatLng, {icon: forecastIconImage }).addTo(map);
             let weatherCode = data.timeSeries[0].areas[0].weatherCodes[0]
@@ -230,72 +230,103 @@ function mapDrawAll() {
             }else if(weatherCode === 302){
                 weatherIcon = "雨時々止む"
             }else if(weatherCode === 303){
-                weatherIcon = "雨時々雪"//ここまで作業完了
+                weatherIcon = "雨時々雪"
             }else if(weatherCode === 304){
-                weatherIcon = "曇時々雪"
-            }else if(weatherCode === 305){
-                weatherIcon = "曇時々雪"
+                weatherIcon = "みぞれ"
             }else if(weatherCode === 306){
-                weatherIcon = "曇時々雪"
+                weatherIcon = "大雨"
             }else if(weatherCode === 307){
-                weatherIcon = "曇時々雪"
-            }else if(weatherCode === 308){
-                weatherIcon = "曇時々雨"
+                weatherIcon = "雨"
             }else if(weatherCode === 309){
-                weatherIcon = "曇"
-            }else if(weatherCode === 310){
-                weatherIcon = "曇のち時々晴れ"
+                weatherIcon = "雨時々雪"
             }else if(weatherCode === 311){
-                weatherIcon = "曇のち時々晴れ"
-            }else if(weatherCode === 312){
-                weatherIcon = "曇のち時々雨"
+                weatherIcon = "雨のち晴れ"
             }else if(weatherCode === 313){
-                weatherIcon = "曇のち時々雨"
+                weatherIcon = "雨のち曇"
             }else if(weatherCode === 314){
-                weatherIcon = "曇のち時々雨"
+                weatherIcon = "雨のち雪"
             }else if(weatherCode === 315){
-                weatherIcon = "曇のち時々雪"
+                weatherIcon = "雨のち雪"
             }else if(weatherCode === 316){
-                weatherIcon = "曇のち時々雪"
+                weatherIcon = "雨のち晴れ"
             }else if(weatherCode === 317){
-                weatherIcon = "曇のち時々雪"
-            }else if(weatherCode === 318){
-                weatherIcon = "曇のち時々雪"
-            }else if(weatherCode === 319){
-                weatherIcon = "曇のち時々雨"
+                weatherIcon = "雨のち曇"
             }else if(weatherCode === 320){
-                weatherIcon = "曇時々雨"
+                weatherIcon = "雨のち晴れ"
             }else if(weatherCode === 321){
-                weatherIcon = "曇時々雨"
+                weatherIcon = "雨のち曇"
             }else if(weatherCode === 322){
-                weatherIcon = "曇時々雨"
+                weatherIcon = "雨時々雪"
             }else if(weatherCode === 323){
-                weatherIcon = "曇時々晴れ"
+                weatherIcon = "雨のち晴れ"
             }else if(weatherCode === 324){
-                weatherIcon = "曇のち時々雨"
+                weatherIcon = "雨のち晴れ"
             }else if(weatherCode === 325){
-                weatherIcon = "曇のち時々雨"
+                weatherIcon = "雨のち晴れ"
             }else if(weatherCode === 326){
-                weatherIcon = "曇のち時々雨"
+                weatherIcon = "雨のち雪"
+            }else if(weatherCode === 327){
+                weatherIcon = "雨のち雪"
             }else if(weatherCode === 328){
-                weatherIcon = "曇のち時々雪"
+                weatherIcon = "大雨"
             }else if(weatherCode === 329){
-                weatherIcon = "曇のち時々雪"
-            }else if(weatherCode === 330){
-                weatherIcon = "曇のち時々雪"
-            }else if(weatherCode === 331){
-                weatherIcon = "曇時々雨"
+                weatherIcon = "みぞれ"
             }else if(weatherCode === 340){
-                weatherIcon = "曇時々雨"
+                weatherIcon = "雪"
             }else if(weatherCode === 350){
-                weatherIcon = "曇時々雪"
-            }else if(weatherCode === 360){
-                weatherIcon = "曇時々雪"
-            }else if(weatherCode === 370){
-                weatherIcon = "曇時々雪"
-            }else if(weatherCode === 381){
-                weatherIcon = "曇のち時々雪"
+                weatherIcon = "雨"
+            }else if(weatherCode === 361){
+                weatherIcon = "雨のち晴れ"
+            }else if(weatherCode === 371){
+                weatherIcon = "雨のち曇"
+            }else if(weatherCode === 400){
+                weatherIcon = "雪"
+            }else if(weatherCode === 401){
+                weatherIcon = "雪時々晴れ"
+            }else if(weatherCode === 402){
+                weatherIcon = "雪時々止む"
+            }else if(weatherCode === 403){
+                weatherIcon = "雪時々雨"
+            }else if(weatherCode === 404){
+                weatherIcon = "大雪"//後画像追加
+            }else if(weatherCode === 406){
+                weatherIcon = "大雪"
+            }else if(weatherCode === 407){
+                weatherIcon = "大雪"
+            }else if(weatherCode === 409){
+                weatherIcon = "雪時々雨"
+            }else if(weatherCode === 411){
+                weatherIcon = "雪のち晴れ"
+            }else if(weatherCode === 413){
+                weatherIcon = "雪のち曇"
+            }else if(weatherCode === 414){
+                weatherIcon = "雪のち雨"
+            }else if(weatherCode === 420){
+                weatherIcon = "雪のち晴れ"
+            }else if(weatherCode === 421){
+                weatherIcon = "雪のち曇"
+            }else if(weatherCode === 422){
+                weatherIcon = "雪のち雨"
+            }else if(weatherCode === 423){
+                weatherIcon = "雪のち雨"
+            }else if(weatherCode === 425){
+                weatherIcon = "大雪"
+            }else if(weatherCode === 426){
+                weatherIcon = "雪のちみぞれ"
+            }else if(weatherCode === 427){
+                weatherIcon = "雪時々みぞれ"
+            }else if(weatherCode === 450){
+                weatherIcon = "雪"
             }
+            var weatherLatLng = new L.LatLng(iconPlace[a][1], iconPlace[a][2]);
+            var weatherIconImage = L.icon({
+                iconUrl: 'png/' + weatherIcon + '.png',
+                iconSize: [91, 51.1],//16:9
+                iconAnchor: [80, 24.1],
+                popupAnchor: [0, -40],
+                zIndexOffset: 10000
+            });
+            var weatherIcon = L.marker(weatherLatLng, {icon: weatherIconImage }).addTo(map);
             a++
         }).fail(function() {
             console.error("Forecast data for area " + area + " could not be loaded.");
