@@ -79,8 +79,7 @@ function mapDrawAll() {
                 zIndexOffset: 1000
             });
             var forecastIcon = L.marker(forecastLatLng, {icon: forecastIconImage }).addTo(map);
-            let weatherCode = data[0].timeSeries[0].areas[0].weatherCodes[0]
-            console.log(weatherCode)
+            let weatherCode = Number(data[0].timeSeries[0].areas[0].weatherCodes[0])
             let weatherIcon = ""
             if(weatherCode === 100){
                 weatherIcon = "晴れ"
