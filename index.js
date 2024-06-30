@@ -1,6 +1,6 @@
 var map;
 
-function mapDrawAll() {
+function mapDrawAll(d) {
     // 地図が既に初期化されているか確認
     if (map !== undefined) {
         // 地図を削除
@@ -66,10 +66,23 @@ function mapDrawAll() {
     var forecastAreas = ["016000","014100","040000","130000","150000","170000","230000","270000","340000","390000","400000","460100","471000"];
     var iconPlace = [["札幌", 43.934122, 139.993943],["釧路", 42.042173, 144.786549],["仙台", 38.072153, 142.818724],["東京", 35.711801, 141.580899],["新潟", 38.122108, 137.359597],["石川", 36.79951118421221, 135.70916353413136],["名古屋", 34.40904120950989, 139.1211179431347],["大阪", 33.531133055984306, 136.0424242037967],["広島", 35.350192, 131.868731],["高知", 32.9204809735311, 132.88438265229934],["福岡", 33.213064, 128.361559],["鹿児島", 31.591914, 129.361341],["那覇", 25.332519, 128.615472]]
     var a = 0
+    var dateSet = ""
+    function date(newDate){
+        let year = new Date(newDate).getFullYear()
+        let month = ("0" + (new Date(newDate).getMonth() + 1)).slice(-2)
+        let date = ("0" + new Date(newDate).getDate()).slice(-2)
+        let hour = ("0" + new Date(newDate).getHours()).slice(-2)
+        return year + "年" + month + "月" + date + "日 " + hour + "時"
+    }
 
     // AMeDAS データを読み込み、円を追加
     forecastAreas.forEach(function(area) {
         $.getJSON("https://www.jma.go.jp/bosai/forecast/data/forecast/" + area + ".json", function (data) {
+            document.getElementById('date').innerHTML = date(data[0].timeSeries[0].timeDefines[d]) + "の全国の天気"
+            if(date(data[0].timeSeries[0].timeDefines[d]) !== dateSet){
+                alert("天気予報日が地域ごとに違います。")
+            }
+            dateSet = date(data[0].timeSeries[0].timeDefines[d])
             var forecastLatLng = new L.LatLng(iconPlace[a][1], iconPlace[a][2]);
             var forecastIconImage = L.icon({
                 iconUrl: 'png/place/' + iconPlace[a][0] + '.png',
@@ -79,7 +92,7 @@ function mapDrawAll() {
                 zIndexOffset: 1000
             });
             var forecastIcon = L.marker(forecastLatLng, {icon: forecastIconImage }).addTo(map);
-            let weatherCode = Number(data[0].timeSeries[0].areas[0].weatherCodes[0])
+            let weatherCode = Number(data[0].timeSeries[0].areas[0].weatherCodes[d])
             let weatherIcon = ""
             if(weatherCode === 100){
                 weatherIcon = "晴れ"
@@ -353,12 +366,11 @@ function mapDrawAll() {
 }
 
 function changeMap(i) {
-    console.log("C," + i);
-    mapDraw(i);
+    mapDrawAll(0);
 }
 
 function start() {
-    mapDrawAll();
+    mapDrawAll(0);
 }
 
 start();
