@@ -331,8 +331,8 @@ function mapDrawAll() {
             var temp1 = L.divIcon({
                 html: data[1].tempAverage.areas[0].max,
                 className: 'maxTemp',
-                iconSize: [80,30],
-                iconAnchor: [40,15],
+                iconSize: [30,20],
+                iconAnchor: [-12,22],
                 popupAnchor: [0, -10]
             });
             var temp2 = L.divIcon({
