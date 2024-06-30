@@ -328,7 +328,23 @@ function mapDrawAll() {
                 popupAnchor: [0, -40],
                 zIndexOffset: 10000
             });
+            var temp1 = L.divIcon({
+                html: data[1].tempAverage.areas[0].max,
+                className: 'maxTemp',
+                iconSize: [80,30],
+                iconAnchor: [40,15],
+                popupAnchor: [0, -10]
+            });
+            var temp2 = L.divIcon({
+                html: data[1].tempAverage.areas[0].min,
+                className: 'minTemp',
+                iconSize: [80,30],
+                iconAnchor: [40,15],
+                popupAnchor: [0, -10]
+            });
             var weatherIconInMap = L.marker(weatherLatLng, {icon: weatherIconImage }).addTo(map);
+            var temp1IconInMap = L.marker(weatherLatLng, {icon: temp1 }).addTo(map);
+            var temp2IconInMap = L.marker(weatherLatLng, {icon: temp2 }).addTo(map);
             a++
         }).fail(function() {
             console.error("Forecast data for area " + area + " could not be loaded.");
