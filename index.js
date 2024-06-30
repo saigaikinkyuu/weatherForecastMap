@@ -79,10 +79,10 @@ function mapDrawAll(d) {
     forecastAreas.forEach(function(area) {
         $.getJSON("https://www.jma.go.jp/bosai/forecast/data/forecast/" + area + ".json", function (data) {
             document.getElementById('date').innerHTML = date(data[0].timeSeries[0].timeDefines[d]) + "の全国の天気"
+            dateSet = date(data[0].timeSeries[0].timeDefines[d])
             if(date(data[0].timeSeries[0].timeDefines[d]) !== dateSet){
                 alert("天気予報日が地域ごとに違います。")
             }
-            dateSet = date(data[0].timeSeries[0].timeDefines[d])
             var forecastLatLng = new L.LatLng(iconPlace[a][1], iconPlace[a][2]);
             var forecastIconImage = L.icon({
                 iconUrl: 'png/place/' + iconPlace[a][0] + '.png',
