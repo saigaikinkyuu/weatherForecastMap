@@ -5,6 +5,7 @@ function dateChengeToNext() {
     if(Number(document.getElementById("next").datest.now)+1 <= number-1){
       drawMapAll(Number(document.getElementById("next").datest.now)+1)
       document.getElementById("next").datest.now = Number(document.getElementById("next").datest.now)+1
+      document.getElementById("back").datest.now = Number(document.getElementById("next").datest.now)+1
     }
   })
 }
@@ -13,6 +14,7 @@ function dateChengeToBack() {
     if(Number(document.getElementById("back").datest.now)-1 >= 0){
       drawMapAll(Number(document.getElementById("back").datest.now)-1)
       document.getElementById("back").datest.now = Number(document.getElementById("back").datest.now)-1
+      document.getElementById("next").datest.now = Number(document.getElementById("back").datest.now)-1
     }
   })
 }
