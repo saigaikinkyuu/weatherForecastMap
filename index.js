@@ -326,7 +326,7 @@ function mapDrawAll() {
                 popupAnchor: [0, -40],
                 zIndexOffset: 10000
             });
-            var weatherIcon = L.marker(weatherLatLng, {icon: weatherIconImage }).addTo(map);
+            var weatherIconInMap = L.marker(weatherLatLng, {icon: weatherIconImage }).addTo(map);
             a++
         }).fail(function() {
             console.error("Forecast data for area " + area + " could not be loaded.");
