@@ -4,7 +4,7 @@ html, body, #map {
     margin: 0;
 }
 #map {
-    background: #1d1d1d;
+    background: #212192;
 }
 
 .leaflet-fade-anim .leaflet-popup {
