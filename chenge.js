@@ -11,7 +11,7 @@ function dateChengeToNext() {
 }
 function dateChengeToBack() {
   $.getJSON("https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json", function (data) {
-    if(Number(document.getElementById("back").dataset.now)-1 >= 0){
+    if(Number(document.getElementById("back").dataset.now)-1 > 0){
       mapDrawAll(Number(document.getElementById("back").dataset.now)-1)
       document.getElementById("back").dataset.now = Number(document.getElementById("back").dataset.now)-1
       document.getElementById("next").dataset.now = Number(document.getElementById("back").dataset.now)-1
