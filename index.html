@@ -74,6 +74,11 @@
     <div style="position: absolute;z-index: 10000;top: 116px;color: white;background-color: #000000ba;padding: 4px;width: 380px;font-size: 20px;">
         <h3 id="date" style="margin: 0px;text-align: right;">????年??月??日の全国の天気</h3>
     </div>
+    <div id="setting_MAP" style="position: absolute;z-index: 10000;bottom: 0px;height: 60px;">
+        <div style="display: flex;padding-top: 10px;">
+            <lavel style="line-height: 40px;color: white;">予報日時：</lavel><a id="back" data-now="0" onclick="dateChengeToBack()" href="#" style="border-radius: 5px;margin-right: 10px;">＜</a><a id="next" data-now="0" onclick="dateChengeToNext()" href="#" style="border-radius: 5px;margin-right: 10px;">＞</a>
+        </div>
+    </div>
     <script src="./index.js"></script>
     <script src="./chenge.js"></script>
 </body>
