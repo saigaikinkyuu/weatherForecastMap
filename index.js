@@ -338,8 +338,8 @@ function mapDrawAll() {
             var temp2 = L.divIcon({
                 html: data[1].tempAverage.areas[0].min,
                 className: 'minTemp',
-                iconSize: [80,30],
-                iconAnchor: [40,15],
+                iconSize: [30,20],
+                iconAnchor: [-12,-3],
                 popupAnchor: [0, -10]
             });
             var weatherIconInMap = L.marker(weatherLatLng, {icon: weatherIconImage }).addTo(map);
