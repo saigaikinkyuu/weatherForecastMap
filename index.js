@@ -78,10 +78,11 @@ function mapDrawAll(d) {
     // AMeDAS データを読み込み、円を追加
     forecastAreas.forEach(function(area) {
         let c = area.slice(-2)
+        let areaNumber = ""
         if(c === "01"){
-            let areaNumber = "016000"
+            areaNumber = "016000"
         }else {
-            let areaNumber = area.replace(c , "")
+            areaNumber = area.replace(c , "")
         }
         c = Number(area.slice(-2))
         $.getJSON("https://www.jma.go.jp/bosai/forecast/data/forecast/" + areaNumber + ".json", function (data) {
