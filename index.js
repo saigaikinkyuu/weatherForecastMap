@@ -63,7 +63,7 @@ function mapDrawAll(d) {
         currentMin = currentMin.slice(0,1);
     }
 
-    var forecastAreas = ["016000","014100","040000","130000","150000","170000","230000","270000","340000","390000","400000","460100","471000"];
+    var forecastAreas = ["01600001","01410002","04000003","13000004","15000005","17000006","23000007","27000008","34000009","39000010","40000011","46010012","47100013"];
     var iconPlace = [["札幌", 43.934122, 139.993943],["釧路", 42.042173, 144.786549],["仙台", 38.072153, 142.818724],["東京", 35.711801, 141.580899],["新潟", 38.122108, 137.359597],["石川", 36.79951118421221, 135.70916353413136],["名古屋", 34.40904120950989, 139.1211179431347],["大阪", 33.531133055984306, 136.0424242037967],["広島", 35.350192, 131.868731],["高知", 32.9204809735311, 132.88438265229934],["福岡", 33.213064, 128.361559],["鹿児島", 31.591914, 129.361341],["那覇", 25.332519, 128.615472]]
     var a = 0
     var dateSet = ""
@@ -77,15 +77,18 @@ function mapDrawAll(d) {
 
     // AMeDAS データを読み込み、円を追加
     forecastAreas.forEach(function(area) {
-        $.getJSON("https://www.jma.go.jp/bosai/forecast/data/forecast/" + area + ".json", function (data) {
+        let c = area.slice(-2)
+        let areaNumber = area.replace(c , "")
+        c = Number(area.slice(-2))
+        $.getJSON("https://www.jma.go.jp/bosai/forecast/data/forecast/" + areaNumber + ".json", function (data) {
             document.getElementById('date').innerHTML = date(data[0].timeSeries[0].timeDefines[d]) + "の全国の天気"
             dateSet = date(data[0].timeSeries[0].timeDefines[d])
             if(date(data[0].timeSeries[0].timeDefines[d]) !== dateSet){
                 alert("天気予報日が地域ごとに違います。")
             }
-            var forecastLatLng = new L.LatLng(iconPlace[a][1], iconPlace[a][2]);
+            var forecastLatLng = new L.LatLng(iconPlace[c][1], iconPlace[c][2]);
             var forecastIconImage = L.icon({
-                iconUrl: 'png/place/' + iconPlace[a][0] + '.png',
+                iconUrl: 'png/place/' + iconPlace[c][0] + '.png',
                 iconSize: [128, 72],//16:9
                 iconAnchor: [80, 45],
                 popupAnchor: [0, -40],
@@ -334,7 +337,7 @@ function mapDrawAll(d) {
             }else {
                 weatherIcon = "不明"
             }
-            var weatherLatLng = new L.LatLng(iconPlace[a][1], iconPlace[a][2]);
+            var weatherLatLng = new L.LatLng(iconPlace[c][1], iconPlace[c][2]);
             var weatherIconImage = L.icon({
                 iconUrl: 'png/' + weatherIcon + '.png',
                 iconSize: [91, 51.1],//16:9
@@ -359,7 +362,6 @@ function mapDrawAll(d) {
             var weatherIconInMap = L.marker(weatherLatLng, {icon: weatherIconImage }).addTo(map);
             var temp1IconInMap = L.marker(weatherLatLng, {icon: temp1 }).addTo(map);
             var temp2IconInMap = L.marker(weatherLatLng, {icon: temp2 }).addTo(map);
-            a++
         }).fail(function() {
             console.error("Forecast data for area " + area + " could not be loaded.");
         });
