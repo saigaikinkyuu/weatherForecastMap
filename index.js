@@ -78,7 +78,11 @@ function mapDrawAll(d) {
     // AMeDAS データを読み込み、円を追加
     forecastAreas.forEach(function(area) {
         let c = area.slice(-2)
-        let areaNumber = area.replace(c , "")
+        if(c ==== "01"){
+            let areaNumber = "016000"
+        }else {
+            let areaNumber = area.replace(c , "")
+        }
         c = Number(area.slice(-2))
         $.getJSON("https://www.jma.go.jp/bosai/forecast/data/forecast/" + areaNumber + ".json", function (data) {
             document.getElementById('date').innerHTML = date(data[0].timeSeries[0].timeDefines[d]) + "の全国の天気"
