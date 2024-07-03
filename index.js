@@ -84,7 +84,7 @@ function mapDrawAll(d) {
         }else {
             areaNumber = area.replace(c , "")
         }
-        c = Number(area.slice(-2))
+        c = Number(area.slice(-2))-1
         $.getJSON("https://www.jma.go.jp/bosai/forecast/data/forecast/" + areaNumber + ".json", function (data) {
             document.getElementById('date').innerHTML = date(data[0].timeSeries[0].timeDefines[d]) + "の全国の天気"
             dateSet = date(data[0].timeSeries[0].timeDefines[d])
