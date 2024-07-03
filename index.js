@@ -78,7 +78,7 @@ function mapDrawAll(d) {
     // AMeDAS データを読み込み、円を追加
     forecastAreas.forEach(function(area) {
         let c = area.slice(-2)
-        if(c ==== "01"){
+        if(c === "01"){
             let areaNumber = "016000"
         }else {
             let areaNumber = area.replace(c , "")
