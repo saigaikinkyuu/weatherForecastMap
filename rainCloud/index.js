@@ -7,9 +7,6 @@ var map = L.map('map').fitWorld();
 }
 map.on('locationfound', onLocationFound);
 // 地図を地理院タイルに設定
-var seamLessPhotoLayer = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg', {
-  attribution: "地理院タイル"
-})
 $.getJSON("../prefJson.geojson", function (data) {
     L.geoJson(data, {
         style: {
@@ -23,6 +20,9 @@ $.getJSON("../prefJson.geojson", function (data) {
 }).fail(function() {
     console.error("GeoJSON data could not be loaded.");
 });
+var seamLessPhotoLayer = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg', {
+  attribution: "地理院タイル"
+})
 seamLessPhotoLayer.addTo(map);
 $.getJSON("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json", function (data) {
     console.log(data[0].basetime)
