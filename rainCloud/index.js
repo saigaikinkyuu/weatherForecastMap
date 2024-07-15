@@ -12,7 +12,7 @@ var seamLessPhotoLayer = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/seaml
 })
 seamLessPhotoLayer.addTo(map);
 $.getJSON("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json", function (data) {
-    consol.log(data[0].basetime)
+    console.log(data[0].basetime)
     // ナウキャスト雨雲レーダーを地図へ追加
     var baseTime2 = data[0].basetime;
     var validTime2 = data[0].validTime;
