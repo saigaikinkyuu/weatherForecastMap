@@ -58,10 +58,10 @@ map.on('locationfound', onLocationFound);
 $.getJSON("../prefJson.geojson", function (data) {
     L.geoJson(data, {
         style: {
-            "color": "white",
-            "weight": 1.5,
+            "color": "#ffff4a",
+            "weight": 2,
             "opacity": 1,
-            "fillColor": "#239423",
+            "fillColor": "rgba(0, 0, 0, 0)",
             "fillOpacity": 1
         }
     }).addTo(map).setZIndex(1);
