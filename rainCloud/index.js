@@ -44,7 +44,15 @@ attribution:"気象衛星ひまわりトゥルーカラー再現画像"});
 })
 以上が以前のコード*/
 
-var map = L.map('map').fitWorld();
+var map
+map = L.map('map', {
+    zoomControl: false
+});
+L.control.scale({
+    maxWidth: 150,
+    position: 'bottomright',
+    imperial: false
+}).addTo(map);
 map.setView([35.6, 139.8], 8);
 map.locate({ setView: true, maxZoom: 9 });
 
