@@ -15,7 +15,7 @@ $.getJSON("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json", f
     console.log(data[0].basetime)
     // ナウキャスト雨雲レーダーを地図へ追加
     var baseTime2 = data[0].basetime;
-    var validTime2 = data[0].validTime;
+    var validTime2 = data[0].validtime;
     var nowCastLayer = L.tileLayer('https://www.jma.go.jp/bosai/jmatile/data/nowc/' + baseTime2 + '/none/' + validTime2 + '/surf/hrpns/{z}/{x}/{y}.png', {zIndex:20,maxNativeZoom:10,opacity:0.85,
 attribution:"雨雲の動き"});
     nowCastLayer.addTo(map);
@@ -24,7 +24,7 @@ $.getJSON("https://www.jma.go.jp/bosai/himawari/data/satimg/targetTimes_jp.json"
     let n = data.length-1
     // 気象衛星ひまわり可視光画像を地図へ追加
     var baseTime3 = data[n].basetime;
-    var validTime3 = data[n].validTime;
+    var validTime3 = data[n].validtime;
     var himawariLayer = L.tileLayer('https://www.jma.go.jp/bosai/himawari/data/satimg/' + baseTime3 + '/jp/' + validTime3 + '/REP/ETC/{z}/{x}/{y}.jpg', {zIndex:10,maxNativeZoom:6,maxNativeZoom:6,opacity:0.7,
 attribution:"気象衛星ひまわりトゥルーカラー再現画像"});
     himawariLayer.addTo(map);
