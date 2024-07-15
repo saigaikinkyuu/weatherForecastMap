@@ -16,7 +16,7 @@ $.getJSON("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json", f
     var baseTime2 = data[0].basetime;
     var validTime2 = data[0].validTime;
 })
-var nowCastLayer = L.tileLayer(`https://www.jma.go.jp/bosai/jmatile/data/nowc/${baseTime2}/none/${validTime2}/surf/hrpns/{z}/{x}/{y}.png`, {zIndex:20,maxNativeZoom:10,opacity:0.85,
+var nowCastLayer = L.tileLayer('https://www.jma.go.jp/bosai/jmatile/data/nowc/' + baseTime2 + '/none/' + validTime2 + '/surf/hrpns/{z}/{x}/{y}.png', {zIndex:20,maxNativeZoom:10,opacity:0.85,
 attribution:"雨雲の動き"});
 nowCastLayer.addTo(map);
 $.getJSON("https://www.jma.go.jp/bosai/himawari/data/satimg/targetTimes_jp.json", function (data) {
@@ -25,6 +25,6 @@ $.getJSON("https://www.jma.go.jp/bosai/himawari/data/satimg/targetTimes_jp.json"
     var baseTime3 = data[n].basetime;
     var validTime3 = data[n].validTime;
 })
-var himawariLayer = L.tileLayer(`https://www.jma.go.jp/bosai/himawari/data/satimg/${baseTime3}/jp/${validTime3}/REP/ETC/{z}/{x}/{y}.jpg`, {zIndex:10,maxNativeZoom:6,maxNativeZoom:6,opacity:0.7,
+var himawariLayer = L.tileLayer('https://www.jma.go.jp/bosai/himawari/data/satimg/' + baseTime3 + '/jp/' + validTime3 + '/REP/ETC/{z}/{x}/{y}.jpg', {zIndex:10,maxNativeZoom:6,maxNativeZoom:6,opacity:0.7,
 attribution:"気象衛星ひまわりトゥルーカラー再現画像"});
 himawariLayer.addTo(map);
