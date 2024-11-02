@@ -103,10 +103,10 @@ $.getJSON("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json", f
       if(i>(data.length-1)){
         if(Number((data[0].basetime).slice(10,12)) + 5*(i - (data.length-1)) > 55){
           let baseTime = (data[0].basetime).slice(0,8) + "" + ("0" + (Number((data[0].basetime).slice(8,10))+1)).slice(-2) + ((Number((data[0].basetime).slice(10,12)) + (5*(i - (data.length-1)))) - 60) + "00"
-          rcArray.unshift([baseTime,baseTime])
+          rcArray.push([baseTime,baseTime])
         }else {
           let baseTime = (data[0].basetime).slice(0,8) + "" + ("0" + (data[0].basetime).slice(8,10)).slice(-2) + (Number((data[0].basetime).slice(10,12)) + (5*(i - (data.length-1)))) + "00"
-          rcArray.unshift([baseTime,baseTime])
+          rcArray.push([baseTime,baseTime])
         }
       }else {
         rcArray.unshift([data[i].basetime,data[i].validtime])
