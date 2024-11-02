@@ -100,7 +100,7 @@ $.getJSON("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json", f
     }
     document.getElementById("date").textContent = (data[0].basetime).slice(0,4) + "年" + (data[0].basetime).slice(4,6) + "月" + (data[0].basetime).slice(6,8) + "日 " + ("0" + hour_json).slice(-2) + "時" + (data[0].basetime).slice(10,12) + "分"
     for(var i = 0;i<data.length + 12;i++){
-      if(i<data.length){
+      if(i>data.length){
         if(Number((data[0].basetime).slice(10,12)) + 5*(i - data.length) > 55){
           let baseTime = Number((data[0].basetime).slice(10,12)) + 5*(i - data.length) -60
           rcArray.unshift([baseTime,baseTime])
