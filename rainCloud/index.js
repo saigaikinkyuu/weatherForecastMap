@@ -147,7 +147,7 @@ function dateSend(){
         hour_json = hour_json - 24
       }
       document.getElementsByClassName("leaflet-pane leaflet-lineRain-pane")[0].textContent = ""
-      document.getElementById("date").textContent = (data[0]).slice(0,4) + "年" + (data[0]).slice(4,6) + "月" + (data[0]).slice(6,8) + "日 " + ("0" + hour_json).slice(-2) + "時" + (data[0]).slice(10,12) + "分"
+      document.getElementById("date").textContent = (data[0]).slice(0,4) + "年" + (data[0]).slice(4,6) + "月" + (data[0]).slice(6,8) + "日 " + "<input id='inputTime1' class='timeInput' type='number' value='" + ("0" + hour_json).slice(-2) + "'>" + "時" + "<input id='inputTime2' class='timeInput' type='number' value='" + (data[0].basetime).slice(10,12) + "'>分"
       var nowCastLayer = L.tileLayer('https://www.jma.go.jp/bosai/jmatile/data/nowc/' + rcArray[cloudId-1][0] + '/none/' + rcArray[cloudId-1][1] + '/surf/hrpns/{z}/{x}/{y}.png', {
         zIndex: 3,
         maxNativeZoom: 10,
@@ -181,7 +181,7 @@ function dateBack(){
         hour_json = hour_json - 24
       }
       document.getElementsByClassName("leaflet-pane leaflet-lineRain-pane")[0].textContent = ""
-      document.getElementById("date").textContent = (data[0]).slice(0,4) + "年" + (data[0]).slice(4,6) + "月" + (data[0]).slice(6,8) + "日 " + ("0" + hour_json).slice(-2) + "時" + (data[0]).slice(10,12) + "分"
+      document.getElementById("date").textContent = (data[0]).slice(0,4) + "年" + (data[0]).slice(4,6) + "月" + (data[0]).slice(6,8) + "日 " + "<input id='inputTime1' class='timeInput' type='number' value='" + ("0" + hour_json).slice(-2) + "'>" + "時" + "<input id='inputTime2' class='timeInput' type='number' value='" + (data[0].basetime).slice(10,12) + "'>分"
       var nowCastLayer = L.tileLayer('https://www.jma.go.jp/bosai/jmatile/data/nowc/' + rcArray[cloudId-1][0] + '/none/' + rcArray[cloudId-1][1] + '/surf/hrpns/{z}/{x}/{y}.png', {
         zIndex: 3,
         maxNativeZoom: 10,
@@ -209,7 +209,7 @@ function dateSet(){
       hour_json = hour_json - 24
     }
     document.getElementsByClassName("leaflet-pane leaflet-lineRain-pane")[0].textContent = ""
-    document.getElementById("date").textContent = (data[0]).slice(0,4) + "年" + (data[0]).slice(4,6) + "月" + (data[0]).slice(6,8) + "日 " + ("0" + hour_json).slice(-2) + "時" + (data[0]).slice(10,12) + "分"
+    document.getElementById("date").textContent = (data[0]).slice(0,4) + "年" + (data[0]).slice(4,6) + "月" + (data[0]).slice(6,8) + "日 " + "<input id='inputTime1' class='timeInput' type='number' value='" + ("0" + hour_json).slice(-2) + "'>" + "時" + "<input id='inputTime2' class='timeInput' type='number' value='" + (data[0].basetime).slice(10,12) + "'>分"
     var nowCastLayer = L.tileLayer('https://www.jma.go.jp/bosai/jmatile/data/nowc/' + rcArray[cloudId-1][0] + '/none/' + rcArray[cloudId-1][1] + '/surf/hrpns/{z}/{x}/{y}.png', {
       zIndex: 3,
       maxNativeZoom: 10,
