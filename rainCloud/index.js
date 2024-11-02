@@ -137,7 +137,7 @@ function dateSend(){
         cloudId = 1
       }
       let data = [rcArray[cloudId-1][0]]
-      var hour_json = Number((data[0].basetime).slice(8,10)) + 9
+      var hour_json = Number((data[0]).slice(8,10)) + 9
       if(hour_json > 23){
         hour_json = hour_json - 24
       }
