@@ -107,3 +107,5 @@ $.getJSON("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json", f
     });
     nowCastLayer.addTo(map);
 });
+
+function dateSend(){}
