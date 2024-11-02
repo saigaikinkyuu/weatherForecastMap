@@ -48,6 +48,7 @@ var map
 var rcArray = []
 var stopFlag = true
 var cloudId = 0
+var rcTimeArray = []
 map = L.map('map', {
     zoomControl: false
 });
@@ -115,6 +116,9 @@ $.getJSON("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json", f
       }else {
         rcArray.unshift([data[i].basetime,data[i].validtime])
       }
+    }
+    for(var s = 0;s<rcArray.length;s++){
+      rcTimeArray.push(rcArray[s][1])
     }
     var nowCastLayer = L.tileLayer('https://www.jma.go.jp/bosai/jmatile/data/nowc/' + baseTime2 + '/none/' + validTime2 + '/surf/hrpns/{z}/{x}/{y}.png', {
         zIndex: 3,
@@ -188,4 +192,31 @@ function dateBack(){
       nowCastLayer.addTo(map);
     }
   }, 2000)
+}
+
+function dateSet(){
+  let data = [rcArray[0][1]]
+  var hour_json = Number(document.getElementById("inputTime1").value) - 9
+  if(hour_json < 0){
+    hour_json = hour_json + 24
+  }
+  let timeId = (data[0]).slice(0,4) + "" + (data[0]).slice(4,6) + "" + (data[0]).slice(6,8) + "" + ("0" + hour_json).slice(-2) + "" + ("0" + Number(document.getElementById("inputTime2").value)).slice(-2)
+  if(rcTimeArray.includes(timeId) === true){
+    cloudId = rcTimeArray.indexOf(timeId)
+    data = [rcArray[rcTimeArray.indexOf(timeId)][1]]
+    hour_json = Number((data[0]).slice(8,10)) + 9
+    if(hour_json > 23){
+      hour_json = hour_json - 24
+    }
+    document.getElementsByClassName("leaflet-pane leaflet-lineRain-pane")[0].textContent = ""
+    document.getElementById("date").textContent = (data[0]).slice(0,4) + "年" + (data[0]).slice(4,6) + "月" + (data[0]).slice(6,8) + "日 " + ("0" + hour_json).slice(-2) + "時" + (data[0]).slice(10,12) + "分"
+    var nowCastLayer = L.tileLayer('https://www.jma.go.jp/bosai/jmatile/data/nowc/' + rcArray[cloudId-1][0] + '/none/' + rcArray[cloudId-1][1] + '/surf/hrpns/{z}/{x}/{y}.png', {
+      zIndex: 3,
+      maxNativeZoom: 10,
+      opacity: 0.85,
+      attribution: "雨雲の動き",
+      pane: "lineRain"
+    });
+    nowCastLayer.addTo(map);
+  }
 }
