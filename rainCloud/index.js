@@ -154,3 +154,7 @@ function dateSend(){
     }
   }, 2000)
 }
+
+function dateStop(){
+  stopFlag = true
+}
