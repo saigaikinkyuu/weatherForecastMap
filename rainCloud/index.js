@@ -218,5 +218,7 @@ function dateSet(){
       pane: "lineRain"
     });
     nowCastLayer.addTo(map);
+  }else {
+    alert("時間に誤りがあります")
   }
 }
