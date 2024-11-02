@@ -46,6 +46,8 @@ attribution:"気象衛星ひまわりトゥルーカラー再現画像"});
 
 var map
 var rcArray = []
+var stopFlag = true
+var cloudId = 0
 map = L.map('map', {
     zoomControl: false
 });
@@ -124,4 +126,25 @@ $.getJSON("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json", f
     nowCastLayer.addTo(map);
 });
 
-function dateSend(){}
+function dateSend(){
+  stopFlag = false
+  const interval = setInterval(function() {
+    if(stopFlag === true){
+      clearInterval(interval);
+    }else {
+      cloudId++
+      if(cloudId >= rcArray.length){
+        cloudId = 1
+      }
+      document.getElementsByClassName("leaflet-pane leaflet-lineRain-pane").innerHTML = ""
+      var nowCastLayer = L.tileLayer('https://www.jma.go.jp/bosai/jmatile/data/nowc/' + rcArray[cloudId-1][0] + '/none/' + rcArray[cloudId-1][1] + '/surf/hrpns/{z}/{x}/{y}.png', {
+        zIndex: 3,
+        maxNativeZoom: 10,
+        opacity: 0.85,
+        attribution: "雨雲の動き",
+        pane: "lineRain"
+      });
+      nowCastLayer.addTo(map);
+    }
+  }, 2000)
+}
