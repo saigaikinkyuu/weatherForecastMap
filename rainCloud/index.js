@@ -62,7 +62,7 @@ function onLocationFound(e) {
     L.circleMarker(e.latlng, { radius: 10, color: '#FF' }).addTo(map);
 }
 map.on('locationfound', onLocationFound);
-var lineRain = map.createPane('RainCloud');
+var lineRain = map.createPane('lineRain');
 
 // GeoJSONデータを最背面に追加
 $.getJSON("../prefJson.geojson", function (data) {
@@ -101,11 +101,11 @@ $.getJSON("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json", f
     document.getElementById("date").textContent = (data[0].basetime).slice(0,4) + "年" + (data[0].basetime).slice(4,6) + "月" + (data[0].basetime).slice(6,8) + "日 " + ("0" + hour_json).slice(-2) + "時" + (data[0].basetime).slice(10,12) + "分"
     for(var i = 0;i<data.length + 12;i++){
       if(i>(data.length-1)){
-        if(Number((data[0].basetime).slice(10,12)) + 5*(i - data.length) > 55){
-          let baseTime = Number((data[0].basetime).slice(10,12)) + 5*(i - data.length) -60
+        if(Number((data[0].basetime).slice(10,12)) + 5*(i - (data.length-1)) > 55){
+          let baseTime = ("0" + hour_json).slice(-2) + (Number((data[0].basetime).slice(10,12)) + 5*(i - (data.length-1)) -60) + "00"
           rcArray.unshift([baseTime,baseTime])
         }else {
-          let baseTime = Number((data[0].basetime).slice(10,12)) + 5*(i - data.length)
+          let baseTime = Number((data[0].basetime).slice(10,12)) + 5*(i - (data.length-1))
           rcArray.unshift([baseTime,baseTime])
         }
       }else {
