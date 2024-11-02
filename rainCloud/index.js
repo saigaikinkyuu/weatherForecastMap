@@ -45,6 +45,7 @@ attribution:"気象衛星ひまわりトゥルーカラー再現画像"});
 以上が以前のコード*/
 
 var map
+var rcArray = []
 map = L.map('map', {
     zoomControl: false
 });
@@ -61,6 +62,7 @@ function onLocationFound(e) {
     L.circleMarker(e.latlng, { radius: 10, color: '#FF' }).addTo(map);
 }
 map.on('locationfound', onLocationFound);
+var lineRain = map.createPane('RainCloud');
 
 // GeoJSONデータを最背面に追加
 $.getJSON("../prefJson.geojson", function (data) {
@@ -96,14 +98,28 @@ $.getJSON("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json", f
     if(hour_json > 23){
       hour_json = hour_json - 24
     }
-    document.getElementById("date").textContent = (data[0].basetime).slice(0,4) + "年" + (data[0].basetime).slice(4,6) + "月" + (data[0].basetime).slice(6,8) + "日 " + ("0" + hour_json).slice(-2) + "時" + (data[0].basetime).slice(10,12) + "分"  
+    document.getElementById("date").textContent = (data[0].basetime).slice(0,4) + "年" + (data[0].basetime).slice(4,6) + "月" + (data[0].basetime).slice(6,8) + "日 " + ("0" + hour_json).slice(-2) + "時" + (data[0].basetime).slice(10,12) + "分"
+    for(var i = 0;i<data.length + 12;i++){
+      if(i<data.length){
+        if(Number((data[0].basetime).slice(10,12)) + 5*(i - data.length) > 55){
+          let baseTime = Number((data[0].basetime).slice(10,12)) + 5*(i - data.length) -60
+          rcArray.unshift([baseTime,baseTime])
+        }else {
+          let baseTime = Number((data[0].basetime).slice(10,12)) + 5*(i - data.length)
+          rcArray.unshift([baseTime,baseTime])
+        }
+      }else {
+        rcArray.unshift([data[i].basetime,data[i].validtime])
+      }
+    }
     var baseTime2 = data[0].basetime;
     var validTime2 = data[0].validtime;
     var nowCastLayer = L.tileLayer('https://www.jma.go.jp/bosai/jmatile/data/nowc/' + baseTime2 + '/none/' + validTime2 + '/surf/hrpns/{z}/{x}/{y}.png', {
         zIndex: 3,
         maxNativeZoom: 10,
         opacity: 0.85,
-        attribution: "雨雲の動き"
+        attribution: "雨雲の動き",
+        pane: "lineRain"
     });
     nowCastLayer.addTo(map);
 });
