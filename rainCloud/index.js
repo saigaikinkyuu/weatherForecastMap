@@ -200,7 +200,7 @@ function dateSet(){
   if(hour_json < 0){
     hour_json = hour_json + 24
   }
-  let timeId = (data[0]).slice(0,4) + "" + (data[0]).slice(4,6) + "" + (data[0]).slice(6,8) + "" + ("0" + hour_json).slice(-2) + "" + ("0" + Number(document.getElementById("inputTime2").value)).slice(-2)
+  let timeId = (data[0]).slice(0,4) + "" + (data[0]).slice(4,6) + "" + (data[0]).slice(6,8) + "" + ("0" + hour_json).slice(-2) + "" + ("0" + Number(document.getElementById("inputTime2").value)).slice(-2) + "00"
   if(rcTimeArray.includes(timeId) === true){
     cloudId = rcTimeArray.indexOf(timeId)
     data = [rcArray[rcTimeArray.indexOf(timeId)][1]]
