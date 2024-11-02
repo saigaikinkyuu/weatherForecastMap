@@ -92,6 +92,11 @@ $.getJSON("https://www.jma.go.jp/bosai/himawari/data/satimg/targetTimes_jp.json"
 
 $.getJSON("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json", function (data) {
     console.log(data[0].basetime);
+    var hour_json = Number((data[0].basetime).slice(8,10)) + 9
+    if(hour_json > 23){
+      hour_json = hour_json - 24
+    }
+    document.getElementById("date").textContent = (data[0].basetime).slice(0,4) + "年" + (data[0].basetime).slice(4,6) + "月" + (data[0].basetime).slice(6,8) + "日 " + ("0" + hour_json).slice(-2) + "時" + (data[0].basetime).slice(10,12) + "分"  
     var baseTime2 = data[0].basetime;
     var validTime2 = data[0].validtime;
     var nowCastLayer = L.tileLayer('https://www.jma.go.jp/bosai/jmatile/data/nowc/' + baseTime2 + '/none/' + validTime2 + '/surf/hrpns/{z}/{x}/{y}.png', {
