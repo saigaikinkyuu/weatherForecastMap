@@ -96,6 +96,8 @@ $.getJSON("https://www.jma.go.jp/bosai/himawari/data/satimg/targetTimes_jp.json"
 
 $.getJSON("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json", function (data) {
     console.log(data[0].basetime);
+    var baseTime2 = data[0].basetime;
+    var validTime2 = data[0].validtime;
     var hour_json = Number((data[0].basetime).slice(8,10)) + 9
     if(hour_json > 23){
       hour_json = hour_json - 24
@@ -105,17 +107,15 @@ $.getJSON("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json", f
       if(i>(data.length-1)){
         if(Number((data[0].basetime).slice(10,12)) + 5*(i - (data.length-1)) > 55){
           let baseTime = (data[0].basetime).slice(0,8) + "" + ("0" + (Number((data[0].basetime).slice(8,10))+1)).slice(-2) + ("0" + ((Number((data[0].basetime).slice(10,12)) + (5*(i - (data.length-1)))) - 60)).slice(-2) + "00"
-          rcArray.push([baseTime,baseTime])
+          rcArray.push([baseTime2,baseTime])
         }else {
           let baseTime = (data[0].basetime).slice(0,8) + "" + ("0" + (data[0].basetime).slice(8,10)).slice(-2) + ("0" + (Number((data[0].basetime).slice(10,12)) + (5*(i - (data.length-1))))).slice(-2) + "00"
-          rcArray.push([baseTime,baseTime])
+          rcArray.push([baseTime2,baseTime])
         }
       }else {
         rcArray.unshift([data[i].basetime,data[i].validtime])
       }
     }
-    var baseTime2 = data[0].basetime;
-    var validTime2 = data[0].validtime;
     var nowCastLayer = L.tileLayer('https://www.jma.go.jp/bosai/jmatile/data/nowc/' + baseTime2 + '/none/' + validTime2 + '/surf/hrpns/{z}/{x}/{y}.png', {
         zIndex: 3,
         maxNativeZoom: 10,
@@ -136,7 +136,7 @@ function dateSend(){
       if(cloudId >= rcArray.length){
         cloudId = 1
       }
-      let data = [rcArray[cloudId-1][0]]
+      let data = [rcArray[cloudId-1][1]]
       var hour_json = Number((data[0]).slice(8,10)) + 9
       if(hour_json > 23){
         hour_json = hour_json - 24
