@@ -136,7 +136,7 @@ function dateSend(){
       if(cloudId >= rcArray.length){
         cloudId = 1
       }
-      document.getElementsByClassName("leaflet-pane leaflet-lineRain-pane").textContent = ""
+      document.getElementsByClassName("leaflet-pane leaflet-lineRain-pane")[0].textContent = ""
       var nowCastLayer = L.tileLayer('https://www.jma.go.jp/bosai/jmatile/data/nowc/' + rcArray[cloudId-1][0] + '/none/' + rcArray[cloudId-1][1] + '/surf/hrpns/{z}/{x}/{y}.png', {
         zIndex: 3,
         maxNativeZoom: 10,
