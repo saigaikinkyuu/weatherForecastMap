@@ -86,6 +86,11 @@ $.getJSON("https://www.jma.go.jp/bosai/himawari/data/satimg/targetTimes_jp.json"
     let n = data.length - 1;
     var baseTime3 = data[n].basetime;
     var validTime3 = data[n].validtime;
+    var hour_json = Number((data[0].basetime).slice(8,10)) + 9
+    if(hour_json > 23){
+      hour_json = hour_json - 24
+    }
+    document.getElementById("date_HIMAWARI").textContent = "［ひまわり］" + (data[0].basetime).slice(0,4) + "年" + (data[0].basetime).slice(4,6) + "月" + (data[0].basetime).slice(6,8) + "日 " + ("0" + hour_json).slice(-2) + "時" + (data[0].basetime).slice(10,12) + "分"
     var himawariLayer = L.tileLayer('https://www.jma.go.jp/bosai/himawari/data/satimg/' + baseTime3 + '/jp/' + validTime3 + '/REP/ETC/{z}/{x}/{y}.jpg', {
         zIndex: 2,
         maxNativeZoom: 6,
