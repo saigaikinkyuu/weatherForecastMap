@@ -196,11 +196,13 @@ function dateBack(){
 
 function dateSet(){
   let data = [rcArray[0][1]]
+  var date_json = new Date().getDate()
   var hour_json = Number(document.getElementById("inputTime1").value) - 9
   if(hour_json < 0){
     hour_json = hour_json + 24
+    date_json = date_json - 1
   }
-  let timeId = (data[0]).slice(0,4) + "" + (data[0]).slice(4,6) + "" + (data[0]).slice(6,8) + "" + ("0" + hour_json).slice(-2) + "" + ("0" + Number(document.getElementById("inputTime2").value)).slice(-2) + "00"
+  let timeId = (data[0]).slice(0,4) + "" + (data[0]).slice(4,6) + "" + ("0" + date_json).slice(-2) + "" + ("0" + hour_json).slice(-2) + "" + ("0" + Number(document.getElementById("inputTime2").value)).slice(-2) + "00"
   if(rcTimeArray.includes(timeId) === true){
     cloudId = rcTimeArray.indexOf(timeId)
     data = [rcArray[rcTimeArray.indexOf(timeId)][1]]
